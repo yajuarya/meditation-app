@@ -268,7 +268,7 @@ export default function Progress() {
                       {/* Session details */}
                       <div>
                         <div className="text-gray-800 font-medium">
-                          {formatDuration(session.duration)} • {session.breathingPattern}
+                          {formatDuration(session.duration)} • {session.breathingPattern.name}
                         </div>
                         <div className="text-gray-600 text-sm">
                           {formatDate(session.date)}
