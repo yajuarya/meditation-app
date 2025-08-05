@@ -221,13 +221,13 @@ export default function Progress() {
                     <p>Start your meditation journey today. Every expert was once a beginner.</p>
                   )}
                   {progress.totalSessions > 0 && progress.totalSessions < 5 && (
-                    <p>Great start! You're building a healthy habit. Consistency is key to success.</p>
+                    <p>Great start! You&apos;re building a healthy habit. Consistency is key to success.</p>
                   )}
                   {progress.totalSessions >= 5 && progress.totalSessions < 20 && (
-                    <p>You're doing amazing! Your mind is getting stronger with each session.</p>
+                    <p>You&apos;re doing amazing! Your mind is getting stronger with each session.</p>
                   )}
                   {progress.totalSessions >= 20 && (
-                    <p>Incredible dedication! You're truly committed to your mental well-being.</p>
+                    <p>Incredible dedication! You&apos;re truly committed to your mental well-being.</p>
                   )}
                 </div>
               </div>
