@@ -87,7 +87,7 @@ export default function Progress() {
     // Count frequency of each pattern
     const patternCounts: Record<string, number> = {};
     progress.sessions.forEach(session => {
-      patternCounts[session.breathingPattern] = (patternCounts[session.breathingPattern] || 0) + 1;
+      patternCounts[session.breathingPattern.name] = (patternCounts[session.breathingPattern.name] || 0) + 1;
     });
     
     // Find the most frequent pattern
