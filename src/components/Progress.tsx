@@ -15,7 +15,6 @@ export default function Progress() {
     lastSessionDate: null,
     sessions: []
   });
-  });
 
   // State to control which view is active (overview or history)
   const [activeTab, setActiveTab] = useState<'overview' | 'history'>('overview');
