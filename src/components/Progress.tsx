@@ -12,7 +12,9 @@ export default function Progress() {
     totalMinutes: 0,
     currentStreak: 0,
     longestStreak: 0,
+    lastSessionDate: null,
     sessions: []
+  });
   });
 
   // State to control which view is active (overview or history)
