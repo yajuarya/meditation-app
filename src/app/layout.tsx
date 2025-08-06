@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://172.171.199.162"),
   title: "MindfulBreath - Daily Meditation & Wellness",
   description: "Reduce stress and improve focus with guided breathing exercises. Track your meditation progress and build a consistent mindfulness practice.",
   openGraph: {
