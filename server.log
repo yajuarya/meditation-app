@@ -7,9 +7,10 @@
    - Network:      http://0.0.0.0:3005
 
  ✓ Starting...
- ✓ Ready in 2.7s
+ ✓ Ready in 2.6s
  ○ Compiling / ...
- ✓ Compiled / in 16.9s
+ ✓ Compiled / in 17s
  ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3005". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
- HEAD / 200 in 17939ms
- GET / 200 in 227ms
+ HEAD / 200 in 18069ms
+ GET / 200 in 210ms
+ GET / 200 in 195ms
