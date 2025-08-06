@@ -3,13 +3,24 @@
 import { useState } from 'react';
 import Timer from '@/components/Timer';
 import Progress from '@/components/Progress';
+import Footer from '@/components/Footer';
+import FAQ from '@/components/FAQ';
 import { Play, BarChart3 } from 'lucide-react';
 
 export default function Home() {
   const [activeView, setActiveView] = useState<'timer' | 'progress'>('timer');
+  const [isFAQOpen, setIsFAQOpen] = useState(false);
+
+  const handleFAQOpen = () => {
+    setIsFAQOpen(true);
+  };
+
+  const handleFAQClose = () => {
+    setIsFAQOpen(false);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 pb-20">
       {/* Navigation Header */}
       <div className="container mx-auto px-4 pt-8">
         <div className="flex justify-center mb-8">
@@ -43,6 +54,12 @@ export default function Home() {
       {/* Main Content */}
       {activeView === 'timer' && <Timer />}
       {activeView === 'progress' && <Progress />}
+
+      {/* Footer */}
+      <Footer onFAQClick={handleFAQOpen} />
+
+      {/* FAQ Modal */}
+      <FAQ isOpen={isFAQOpen} onClose={handleFAQClose} />
     </div>
   );
 }
