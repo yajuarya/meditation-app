@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Button Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>Share Button Functionality Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        // Test 1: Check if navigator.share is available (mobile)
+        if (navigator.share) {
+            addResult('✓ Native Share API is available (mobile-like environment)', 'success');
+        } else {
+            addResult('✗ Native Share API not available (desktop-like environment)', 'info');
+        }
+        
+        // Test 2: Check clipboard API
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            addResult('✓ Clipboard API is available', 'success');
+        } else {
+            addResult('✗ Clipboard API not available', 'error');
+        }
+        
+        // Test 3: Check touch capabilities
+        const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        addResult(`Touch screen detected: ${hasTouchScreen}`, hasTouchScreen ? 'success' : 'info');
+        
+        // Test 4: Check user agent
+        const userAgent = navigator.userAgent.toLowerCase();
+        const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+        addResult(`Mobile user agent detected: ${isMobileUA}`, isMobileUA ? 'success' : 'info');
+        
+        // Test 5: Check window dimensions
+        addResult(`Window dimensions: ${window.innerWidth}x${window.innerHeight}`, 'info');
+        
+        // Test 6: Simulate share functionality
+        async function testShare() {
+            try {
+                const shareData = {
+                    title: 'Mindful Breathing - Guided Meditation App',
+                    text: 'Check out this amazing guided meditation app for breathing exercises and mindfulness!',
+                    url: window.location.href
+                };
+                
+                if (navigator.share) {
+                    addResult('✓ Would use native share API on this device', 'success');
+                } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(window.location.href);
+                    addResult('✓ Successfully copied to clipboard', 'success');
+                } else {
+                    addResult('✓ Would show social share modal', 'info');
+                }
+            } catch (error) {
+                addResult(`✗ Error during share test: ${error.message}`, 'error');
+            }
+        }
+        
+        testShare();
+    </script>
+</body>
+</html>
